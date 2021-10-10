@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>പരിഭാഷ </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<style>
+
+p {font-size: 20px}	
+h1{text-align: center;}
+
+mark { 
+  background-color: rgb(37, 150, 179);
+  color: rgb(255, 255, 255);
+}
+.result-div {
+  width: 293px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+}
+</style>
+
+<body>
+
+<div class="container">
+	
+	<h1 class="mt-5 mb-5"><mark>പരിഭാഷ</mark></h1>
+
+
+<form method="POST" action="{% url 'translation' %}">
+{% csrf_token %}
+  <div class="form-row mt-4">
+      <textarea type="text" name="text" class="form-control" placeholder="Enter Your Text" rows="5" required="required"></textarea>
+    <br/>
+     <select id="inputState" class="form-control" name="language">
+      <option selected value="ml">Malayalam</option>
+    </select>
+    
+  </div>
+
+      <center><button type="submit" class="btn btn-primary mt-2">Translate</button></center>
+
+</form>
+<br/>
+<center>
+<div class="result-div">
+<p class="mt-4">{{result}}</p>
+</div>
+</center>
+{% csrf_token %}
+
+</div>
+
+
+</body>
+</html>
